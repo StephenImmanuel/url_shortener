@@ -1,19 +1,10 @@
 class ShortenedUrlsController < ApplicationController
   before_action :set_shortened_url, only: [:show, :edit, :update, :destroy]
 
-  # GET /shortened_urls
-  # GET /shortened_urls.json
-  def index
-    @shortened_urls = ShortenedUrl.all
+  def new
+    @shortened_url = ShortenedUrl.new
   end
 
-  # GET /shortened_urls/1
-  # GET /shortened_urls/1.json
-  def show
-  end
-
-  # POST /shortened_urls
-  # POST /shortened_urls.json
   def create
     @shortened_url = ShortenedUrl.new(shortened_url_params)
 
@@ -36,6 +27,6 @@ class ShortenedUrlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shortened_url_params
-      params.require(:shortened_url).permit(:url, :short_url)
+      params.require(:shortened_url).permit(:url)
     end
 end

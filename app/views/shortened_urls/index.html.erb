@@ -1,0 +1,16 @@
+<%= form_for @shortened_url, remote: true, :url => url_for(:controller => 'shortened_urls', :action => 'create') do |f| %>
+  <% if @shortened_url.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @shortened_url.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %><br />
+
+  <%= f.submit :class => 'btn btn-primary' %>
+<% end %>
