@@ -21,6 +21,6 @@ ActiveRecord::Schema.define(version: 20150419131518) do
   end
 
   add_index "shortened_urls", ["short_url"], name: "index_shortened_urls_on_short_url", unique: true
-  add_index "shortened_urls", ["url"], name: "index_shortened_urls_on_url"
+  add_index "shortened_urls", ["url"], name: "index_shortened_urls_on_url", unique: true
 
 end

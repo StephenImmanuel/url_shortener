@@ -1,5 +1,8 @@
+require 'url_shortener'
+
 class ShortenedUrlsController < ApplicationController
   before_action :set_shortened_url, only: [:show, :edit, :update, :destroy]
+  include UrlShortener
 
   def new
     @shortened_url = ShortenedUrl.new
@@ -12,6 +15,10 @@ class ShortenedUrlsController < ApplicationController
       if @shortened_url.save
         format.html { redirect_to @shortened_url, notice: 'Shortened url was successfully created.' }
         format.json { render :show, status: :created, location: @shortened_url }
+      elsif @shortened_url.errors[:url].include? 'has already been taken'
+        @shortened_url = ShortenedUrl.find_by_url(shortened_url_params[:url]);
+        format.html { redirect_to @shortened_url, notice: 'Shortened url was successfully created.' }
+        format.json { render :show, status: :created, location: @shortened_url }      
       else
         format.html { render :new }
         format.json { render json: @shortened_url.errors, status: :unprocessable_entity }

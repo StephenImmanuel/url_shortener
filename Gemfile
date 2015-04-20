@@ -43,3 +43,4 @@ group :development, :test do
   gem 'spring'
 end
 
+gem "validate_url"
