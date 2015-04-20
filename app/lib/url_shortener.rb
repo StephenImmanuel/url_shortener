@@ -16,7 +16,7 @@ module UrlShortener
         false
     end
 
-    def valid_url
+    def valid_long_url
       if @uri.nil?
         @url_errors.push('Invalid Url')
         false
@@ -33,7 +33,7 @@ module UrlShortener
     end
 
     def minify
-      if valid_url  
+      if valid_long_url  
         File.join(@base_url, @slug)
       end
     end
