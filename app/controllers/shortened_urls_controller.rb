@@ -2,7 +2,6 @@ require 'url_shortener'
 
 class ShortenedUrlsController < ApplicationController
   before_action :set_shortened_url, only: [:show, :edit, :update, :destroy]
-  include UrlShortener
 
   def new
     @shortened_url = ShortenedUrl.new
@@ -10,6 +9,8 @@ class ShortenedUrlsController < ApplicationController
 
   def create
     @shortened_url = ShortenedUrl.new(shortened_url_params)
+    @minify_url = UrlShortener::MinifyUrl.new(shortened_url_params[:url], request.base_url)
+    @shortened_url.short_url = @minify_url.minify
 
     respond_to do |format|
       if @shortened_url.save

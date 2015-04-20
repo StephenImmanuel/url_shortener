@@ -5,7 +5,7 @@
  </tr>
  <tr>
    <th>Short url:</th>
-   <td><%= @shortened_url.short_url %></td>
+   <td><%= link_to @shortened_url.short_url, @shortened_url.url, :target => '_blank' %></td>
  </tr>
 </table>
 
