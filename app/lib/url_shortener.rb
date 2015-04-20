@@ -7,6 +7,8 @@ module UrlShortener
     
     def initialize(url)
       @uri = Addressable::URI.parse(url)
+      rescue
+        true
       generate_slug
     end
 
@@ -15,7 +17,9 @@ module UrlShortener
     end
 
     def shorten
-      File.join(@uri.scheme + '://' + @uri.host, @slug)
+      if !@uri.nil? && !@uri.scheme.nil? && !@uri.host.nil?
+        File.join(@uri.scheme + '://' + @uri.host, @slug)
+      end
     end
   end
 end
