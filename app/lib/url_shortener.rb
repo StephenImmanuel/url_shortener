@@ -6,10 +6,10 @@ module UrlShortener
     SLUG_LENGTH_IN_BYTES = 5
     
     def initialize(url)
+      generate_slug
       @uri = Addressable::URI.parse(url)
       rescue
         true
-      generate_slug
     end
 
     def generate_slug

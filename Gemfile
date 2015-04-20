@@ -44,3 +44,5 @@ group :development, :test do
 end
 
 gem "validate_url"
+
+gem 'bootstrap-sass', '~> 3.2.0'

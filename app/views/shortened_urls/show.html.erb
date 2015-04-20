@@ -1,11 +1,12 @@
-<p>
-  <strong>Url:</strong>
-  <%= @shortened_url.url %>
-</p>
+<table class="table col-xs-7">
+ <tr>
+   <th>Url:</th>
+   <td><%= @shortened_url.url %></td>
+ </tr>
+ <tr>
+   <th>Short url:</th>
+   <td><%= @shortened_url.short_url %></td>
+ </tr>
+</table>
 
-<p>
-  <strong>Short url:</strong>
-  <%= @shortened_url.short_url %>
-</p>
-
-<%= link_to 'Create Shortened url', new_shortened_url_path %>
+<%= link_to 'Create Shortened url', new_shortened_url_path, class: 'btn btn-primary' %>

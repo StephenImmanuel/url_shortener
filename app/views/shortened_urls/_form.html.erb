@@ -1,21 +1,22 @@
-<%= form_for(@shortened_url) do |f| %>
+<%= form_for(@shortened_url, :html => {'class' => 'form'}) do |f| %>
   <% if @shortened_url.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shortened_url.errors.count, "error") %> prohibited this shortened_url from being saved:</h2>
-
-      <ul>
-      <% @shortened_url.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="row">
+      <div class="alert alert-danger col-sm-5">
+        <div>
+          <h4><%= pluralize(@shortened_url.errors.count, "error") %> prohibited this shortened_url from being saved:</h4>
+          <ul>
+            <% @shortened_url.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :url %><br>
-    <%= f.text_field :url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <%= f.text_field :url, :class => 'form-control' %>
+    </div>
+  </div> 
+  <%= f.submit :class => 'btn btn-primary col-sm-3'%>
 <% end %>
