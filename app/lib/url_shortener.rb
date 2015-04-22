@@ -21,7 +21,7 @@ module UrlShortener
         @url_errors.push('Invalid Url')
         false
       elsif not VALID_SCHEMES.include? @uri.scheme 
-        @url_errors.push('Invalid Http Method')
+        @url_errors.push('Does not support protocol')
         false
       else
         true
